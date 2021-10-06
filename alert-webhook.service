@@ -1,0 +1,14 @@
+# /etc/systemd/system/alert-webhook.service
+[Unit]
+Description=Alert Webhook
+After=network.target
+
+[Service]
+User=root
+Group=root
+WorkingDirectory=/etc/prometheus/webhook
+ExecStart=/bin/python3 alert-webhook.py
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
